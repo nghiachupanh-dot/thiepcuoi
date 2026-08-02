@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Cưới | Nguyễn Lâm Bảo Khánh & Huỳnh Thị Như Thảo</title>
+    
+    <!-- Google Fonts for Korean Aesthetic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Falling Petals & Click Heart Canvas Overlay -->
+    <canvas id="petalCanvas"></canvas>
+
+    <!-- Floating Music Player Button -->
+    <button id="musicToggle" class="music-btn" aria-label="Toggle Background Music">
+        <i class="fa-solid fa-music"></i>
+        <span class="music-ripple"></span>
+    </button>
+   <audio id="bgMusic" loop src="background.mp3"></audio>
+
+    <!-- Main Container Card -->
+    <div class="wedding-wrapper">
+        
+        <!-- Hero Section / Header -->
+        <header class="hero-section fade-in">
+            <div class="hero-card">
+                <div class="subtitle-badge">
+                    <span class="en">SAVE THE DATE</span>
+                    <span class="vi">TRÂN TRỌNG KÍNH MỜI</span>
+                </div>
+                
+                <div class="flower-divider">❀ ──── ❀</div>
+                
+                <!-- Full Names Prominently Displayed -->
+                <div class="couple-names">
+                    <div class="name-block groom">
+                        <span class="role-tag">CHÚ RỂ / GROOM</span>
+                        <h1 class="full-name">Nguyễn Lâm Bảo Khánh</h1>
+                    </div>
+                    
+                    <div class="ampersand">&amp;</div>
+                    
+                    <div class="name-block bride">
+                        <span class="role-tag">CÔ DÂU / BRIDE</span>
+                        <h1 class="full-name">Huỳnh Thị Như Thảo</h1>
+                    </div>
+                </div>
+
+                <div class="flower-divider">❀ ──── ❀</div>
+
+                <!-- Date & Time Info -->
+                <div class="date-badge">
+                    <span class="day-str">THỨ BẢY / SATURDAY</span>
+                    <div class="main-date">28 . 11 . 2026</div>
+                    <span class="time-str"><i class="fa-regular fa-clock"></i> 18:00 (Giờ Việt Nam / ICT UTC+7)</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Message & Quote Section -->
+        <section class="section message-section fade-in">
+            <div class="content-box">
+                <div class="quote-icon">“</div>
+                <div class="quote-vi">
+                    Tình yêu không phải là tìm một ai đó hoàn hảo, mà là học cách nhìn thấy những điều hoàn hảo từ một người không hoàn hảo.
+                </div>
+                <div class="quote-en">
+                    "Love is not finding someone perfect, but learning to see an imperfect person perfectly."
+                </div>
+                <div class="invitation-text">
+                    <p>Trân trọng kính mời quý khách đến tham dự buổi tiệc tiệc cưới chung vui cùng gia đình chú rể <strong>Nguyễn Lâm Bảo Khánh</strong> &amp; cô dâu <strong>Huỳnh Thị Như Thảo</strong>!</p>
+                    <p class="en-sub">We cordially invite you to celebrate the wedding day of Groom <strong>Nguyễn Lâm Bảo Khánh</strong> &amp; Bride <strong>Huỳnh Thị Như Thảo</strong>!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Countdown Section -->
+        <section class="section countdown-section fade-in">
+            <h2 class="section-title">
+                Đếm Ngược Ngày Chung Đôi
+                <span class="en-title">COUNTDOWN TO OUR BIG DAY</span>
+            </h2>
+
+            <div id="countdown" class="timer-grid">
+                <div class="timer-box">
+                    <span id="days" class="num">00</span>
+                    <span class="label">Ngày / Days</span>
+                </div>
+                <div class="timer-box">
+                    <span id="hours" class="num">00</span>
+                    <span class="label">Giờ / Hours</span>
+                </div>
+                <div class="timer-box">
+                    <span id="minutes" class="num">00</span>
+                    <span class="label">Phút / Mins</span>
+                </div>
+                <div class="timer-box">
+                    <span id="seconds" class="num">00</span>
+                    <span class="label">Giây / Secs</span>
+                </div>
+            </div>
+
+            <!-- Timezone Banner -->
+            <div class="timezone-notice">
+                <i class="fa-solid fa-earth-asia"></i>
+                <div id="userTimezoneInfo">Đang tính toán giờ địa phương của bạn...</div>
+            </div>
+        </section>
+
+        <!-- Event Details & Local Time Conversion -->
+        <section class="section event-section fade-in">
+            <h2 class="section-title">
+                Thời Gian &amp; Địa Điểm
+                <span class="en-title">TIME &amp; LOCATION</span>
+            </h2>
+
+            <div class="event-cards-container">
+                <!-- Vietnam Time Card -->
+                <div class="event-card">
+                    <div class="card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h3>Giờ Tại Việt Nam / Vietnam Time</h3>
+                    <p class="highlight-info">18:00 - Thứ Bảy, 28/11/2026</p>
+                    <p class="sub-info">(Múi giờ Việt Nam: UTC+7 / ICT)</p>
+                </div>
+
+                <!-- Guest's Overseas Local Time Card -->
+                <div class="event-card local-time-card">
+                    <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3>Giờ Địa Phương Của Bạn / Your Local Time</h3>
+                    <p id="guestLocalTimeDisplay" class="highlight-info">Đang tải múi giờ...</p>
+                    <p id="guestTimezoneName" class="sub-info">Chuyển đổi múi giờ tự động theo thiết bị của bạn</p>
+                </div>
+
+                <!-- Venue Card -->
+                <div class="event-card">
+                    <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3>Địa Điểm Tổ Chức / Venue</h3>
+                    <p class="highlight-info">Nhà Hàng Tiệc Cưới Gold Palace</p>
+                    <p class="sub-info">329 Nơ Trang Long, P. Bình Lợi Trung, TP. Hồ Chí Minh 72300, Việt Nam</p>
+                </div>
+            </div>
+
+            <!-- Embedded Map & Navigation -->
+            <div class="map-wrapper">
+                <iframe 
+                    title="Gold Palace Google Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.887201633535!2d106.69680387586867!3d10.820088858388402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175289196bda85b%3A0xe5cd6040e34c9c3e!2s329%20N%C6%A1%20Trang%20Long%2C%20Ph%C6%B0%E1%BB%9Dng%2013%2C%20B%C3%ACnh%20Th%E1%BA%A1nh%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh!5e0!3m2!1svi!2s!4v1710000000000!5m2!1svi!2s" 
+                    width="100%" 
+                    height="280" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Nhà+hàng+tiệc+cưới+Gold+Palace+329+Nơ+Trang+Long+Bình+Lợi+Trung+Hồ+Chí+Minh" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-direction">
+                    <i class="fa-solid fa-diamond-turn-right"></i>
+                    <span>Chỉ Đường Bằng Google Maps / Get Directions</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Interactive Send Wishes Section -->
+        <section class="section wishes-section fade-in">
+            <h2 class="section-title">
+                Gửi Lời Chúc Mừng
+                <span class="en-title">SEND YOUR BLESSINGS</span>
+            </h2>
+
+            <div class="wish-form-box">
+                <input type="text" id="wishSender" placeholder="Tên của bạn / Your Name..." class="wish-input">
+                <textarea id="wishMessage" placeholder="Gửi lời chúc tới Bảo Khánh & Như Thảo... / Write your message..." class="wish-textarea" rows="3"></textarea>
+                <button id="sendWishBtn" class="btn-send-wish">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Gửi Lời Chúc / Send Wish</span>
+                </button>
+            </div>
+
+            <div id="wishesDisplay" class="wishes-list">
+                <!-- User wishes will append here dynamically -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="wedding-footer fade-in">
+            <p class="thank-you-msg">Thank you for sharing our magical moment!</p>
+            <p class="names-footer">Nguyễn Lâm Bảo Khánh ♡ Huỳnh Thị Như Thảo</p>
+            <p class="hashtag">#BaoKhanhNhuThao2026</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
